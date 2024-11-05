@@ -11,7 +11,7 @@ export default function LoginPage() {
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     try {
@@ -19,7 +19,7 @@ export default function LoginPage() {
       if (error) setMessage(error.message);
       else setMessage('Login successful!');
     } catch (error) {
-      setMessage(error.message);
+      setMessage((error as Error).message);
     } finally {
       setIsLoading(false);
     }
